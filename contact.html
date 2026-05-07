@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taha Arda Baş | İletişim</title>
+  <meta name="description" content="Native JavaScript ve Vue ile doğrulanan iletişim formu.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="contact">
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg site-nav">
+      <div class="container">
+        <a class="navbar-brand brand-mark" href="index.html">TAB</a>
+        <button class="navbar-toggler nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Menüyü aç">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link" data-nav="home" href="index.html">Hakkında</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="cv" href="cv.html">CV</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="city" href="city.html">Şehrim</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="heritage" href="heritage.html">Mirasımız</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="interests" href="interests.html">İlgi Alanlarım</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="contact" href="contact.html">İletişim</a></li>
+            <li class="nav-item ms-lg-2"><a class="btn btn-accent btn-sm" href="login.php">Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-hero compact-hero">
+      <div class="container">
+        <p class="eyebrow">İletişim Sayfası</p>
+        <h1>İki farklı doğrulama yöntemiyle çalışan form</h1>
+        <p class="page-intro">
+          Aşağıdaki formda `text`, `email`, `tel`, `select`, `radio`, `checkbox`, `date`, `range` ve `textarea`
+          elemanları birlikte kullanıldı. Aynı form, hem Native JavaScript hem de Vue ile ayrı ayrı denetlenebiliyor.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-shell">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <article class="glass-card reveal sticky-card">
+              <h2>İletişim kartı</h2>
+              <ul class="contact-facts">
+                <li><strong>Ad Soyad:</strong> Taha Arda Baş</li>
+                <li><strong>E-posta:</strong> taha.bas@ogr.sakarya.edu.tr</li>
+                <li><strong>Bölüm:</strong> Bilgisayar Mühendisliği</li>
+                <li><strong>Durum:</strong> Bazı kişisel iletişim detayları daha sonra tamamlanacak</li>
+              </ul>
+              <p class="muted-text">
+                Gerçek iletişim tercihi doğrultusunda mevcut bilgiler kullanıldı; eksik bırakılan kişisel alanlar daha
+                sonra güncellenebilir.
+              </p>
+            </article>
+          </div>
+
+          <div class="col-lg-8">
+            <section class="glass-card reveal" id="contactApp">
+              <div class="validation-banner" :class="{'is-success': submitMessage.type === 'success', 'is-error': submitMessage.type === 'error'}" v-if="submitMessage.text">
+                {{ submitMessage.text }}
+              </div>
+              <div id="nativeSummary" class="validation-banner is-error d-none" aria-live="polite"></div>
+
+              <form id="contactForm" action="contact-handler.php" method="post" novalidate>
+                <input type="hidden" name="validationMode" id="validationMode" value="">
+
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="fullName">Ad Soyad</label>
+                    <input class="form-control" :class="fieldClass('fullName')" id="fullName" name="fullName" type="text" v-model.trim="form.fullName">
+                    <div class="field-error">{{ fieldError('fullName') }}</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="studentNo">Öğrenci Numarası</label>
+                    <input class="form-control" :class="fieldClass('studentNo')" id="studentNo" name="studentNo" type="text" v-model.trim="form.studentNo" placeholder="B241210066">
+                    <div class="field-error">{{ fieldError('studentNo') }}</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="email">E-posta</label>
+                    <input class="form-control" :class="fieldClass('email')" id="email" name="email" type="email" v-model.trim="form.email">
+                    <div class="field-error">{{ fieldError('email') }}</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="phone">Telefon</label>
+                    <input class="form-control" :class="fieldClass('phone')" id="phone" name="phone" type="tel" v-model.trim="form.phone" placeholder="05xxxxxxxxx">
+                    <div class="field-error">{{ fieldError('phone') }}</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="cityName">Şehir</label>
+                    <input class="form-control" :class="fieldClass('cityName')" id="cityName" name="cityName" type="text" v-model.trim="form.cityName" placeholder="Ordu">
+                    <div class="field-error">{{ fieldError('cityName') }}</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="contactDate">Uygun Tarih</label>
+                    <input class="form-control" :class="fieldClass('contactDate')" id="contactDate" name="contactDate" type="date" v-model="form.contactDate">
+                    <div class="field-error">{{ fieldError('contactDate') }}</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label" for="subject">Konu</label>
+                    <select class="form-select" :class="fieldClass('subject')" id="subject" name="subject" v-model="form.subject">
+                      <option value="">Bir konu seçiniz</option>
+                      <option value="proje-gorusmesi">Proje görüşmesi</option>
+                      <option value="etkinlik-daveti">Etkinlik daveti</option>
+                      <option value="staj-kariyer">Staj / kariyer</option>
+                      <option value="genel-iletisim">Genel iletişim</option>
+                    </select>
+                    <div class="field-error">{{ fieldError('subject') }}</div>
+                  </div>
+
+                  <div class="col-12">
+                    <fieldset class="form-fieldset" :class="fieldsetClass('contactType')">
+                      <legend>İletişim tercihi</legend>
+                      <div class="choice-row">
+                        <label><input type="radio" name="contactType" value="email" v-model="form.contactType"> E-posta</label>
+                        <label><input type="radio" name="contactType" value="telefon" v-model="form.contactType"> Telefon</label>
+                        <label><input type="radio" name="contactType" value="online-gorusme" v-model="form.contactType"> Online görüşme</label>
+                      </div>
+                    </fieldset>
+                    <div class="field-error">{{ fieldError('contactType') }}</div>
+                  </div>
+
+                  <div class="col-12">
+                    <fieldset class="form-fieldset" :class="fieldsetClass('topics')">
+                      <legend>İlgi alanı</legend>
+                      <div class="choice-row multi-row">
+                        <label><input type="checkbox" name="topics[]" value="frontend" v-model="form.topics"> Frontend</label>
+                        <label><input type="checkbox" name="topics[]" value="backend" v-model="form.topics"> Backend</label>
+                        <label><input type="checkbox" name="topics[]" value="ui-ux" v-model="form.topics"> UI / UX</label>
+                        <label><input type="checkbox" name="topics[]" value="api" v-model="form.topics"> API entegrasyonu</label>
+                      </div>
+                    </fieldset>
+                    <div class="field-error">{{ fieldError('topics') }}</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label" for="priority">Mesaj Önceliği</label>
+                    <div class="range-wrap">
+                      <input class="form-range" id="priority" name="priority" type="range" min="1" max="5" v-model="form.priority">
+                      <span class="range-badge">{{ form.priority }}/5</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label" for="message">Mesaj</label>
+                    <textarea class="form-control textarea-control" :class="fieldClass('message')" id="message" name="message" rows="5" v-model.trim="form.message" placeholder="Mesajınızı yazın"></textarea>
+                    <div class="field-error">{{ fieldError('message') }}</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="checkbox-line">
+                      <input type="checkbox" id="newsletter" name="newsletter" value="Evet" v-model="form.newsletter">
+                      Geri dönüş ve güncellemeler için bana e-posta gönderilmesini kabul ediyorum.
+                    </label>
+                  </div>
+                </div>
+
+                <div class="button-row">
+                  <button class="btn btn-accent" type="button" id="nativeValidateBtn">Native JS ile denetle ve gönder</button>
+                  <button class="btn btn-outline-light" type="button" @click="submitWithVue">Vue ile denetle ve gönder</button>
+                  <button class="btn btn-ghost" type="reset" @click="resetForm">Formu temizle</button>
+                </div>
+              </form>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <span>&copy; <span data-current-year></span> Web Teknolojileri Projesi</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

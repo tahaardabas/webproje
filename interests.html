@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taha Arda Baş | İlgi Alanlarım</title>
+  <meta name="description" content="TVMaze API entegrasyonu ile dizi verileri çeken ve favori yapımları sergileyen ilgi alanları sayfası.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="interests">
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg site-nav">
+      <div class="container">
+        <a class="navbar-brand brand-mark" href="index.html">TAB</a>
+        <button class="navbar-toggler nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Menüyü aç">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link" data-nav="home" href="index.html">Hakkında</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="cv" href="cv.html">CV</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="city" href="city.html">Şehrim</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="heritage" href="heritage.html">Mirasımız</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="interests" href="interests.html">İlgi Alanlarım</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="contact" href="contact.html">İletişim</a></li>
+            <li class="nav-item ms-lg-2"><a class="btn btn-accent btn-sm" href="login.php">Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">API Entegrasyonu</p>
+          <h1>Film ve dizi radarım</h1>
+          <p class="page-intro">
+            Bu bölümde ücretsiz TVMaze API kullanılarak dizi verileri çekiliyor. Film ve dizi ilgimi tek bir çatı
+            altında göstermek için, API tarafında dizi keşfi; statik bölümde ise favori yapımlarım birlikte sunuluyor.
+          </p>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="portrait-frame">
+            <img src="assets/imdb.jpg" alt="Film ve dizi odaklı görsel">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Favoriler</p>
+          <h2>Sevdiğim yapımlar</h2>
+        </div>
+        <div class="favorites-grid">
+          <article class="feature-card reveal">
+            <h3>How I Met Your Mother</h3>
+            <p>Ritmi, karakterler arası enerji ve tekrar izlenebilir yapısı nedeniyle favori sitcomlarımdan biri.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3>Black Mirror</h3>
+            <p>Teknoloji ile insan davranışını çarpıcı biçimde bir araya getirmesi ilgimi çekiyor.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3>The Breakfast Club</h3>
+            <p>Az mekanda güçlü karakter çözümlemeleri kurabilen kült bir film olduğu için listemde.</p>
+          </article>
+          <article class="feature-card reveal">
+            <h3>Iron Man</h3>
+            <p>Teknoloji, tempo ve karakter dönüşümü birleşince tekrar dönüp bakmak istediğim filmlerden biri oluyor.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell alt-shell">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">TVMaze API</p>
+          <h2>Dizi keşfi</h2>
+          <p>Butonlardan birine tıklayabilir ya da kendi aramanı yapabilirsin. Sonuçlar doğrudan ücretsiz TVMaze API üzerinden gelir.</p>
+        </div>
+
+        <section class="glass-card reveal">
+          <div class="api-toolbar">
+            <form id="showSearchForm" class="search-bar" autocomplete="off">
+              <label class="visually-hidden" for="showQuery">Dizi ara</label>
+              <input id="showQuery" name="showQuery" type="text" class="form-control" placeholder="Örn: Black Mirror">
+              <button class="btn btn-accent" type="submit">Ara</button>
+            </form>
+            <div class="quick-picks">
+              <button class="pill-button" type="button" data-query="How I Met Your Mother">How I Met Your Mother</button>
+              <button class="pill-button" type="button" data-query="Black Mirror">Black Mirror</button>
+              <button class="pill-button" type="button" data-query="Sitcom">Sitcom</button>
+              <button class="pill-button" type="button" data-query="Science Fiction">Science Fiction</button>
+            </div>
+          </div>
+
+          <div id="apiStatus" class="api-status" aria-live="polite">Varsayılan veri yükleniyor...</div>
+          <div id="apiResults" class="api-grid"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <span>&copy; <span data-current-year></span> Web Teknolojileri Projesi</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="js/common.js"></script>
+  <script src="js/interests.js"></script>
+</body>
+</html>
