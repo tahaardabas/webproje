@@ -262,6 +262,28 @@ a {
   border-radius: calc(var(--radius-xl) - 10px);
 }
 
+.portrait-photo {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.about-photo {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius-md);
+}
+
+.about-side-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius-md);
+}
+
 .section-shell {
   padding: 1.35rem 0 2rem;
 }
