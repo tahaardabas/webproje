@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const initialFormState = () => ({
-    fullName: "Taha Arda Ba\u015f",
-    studentNo: "B241210066",
-    email: "taha.bas@ogr.sakarya.edu.tr",
+    fullName: "",
+    studentNo: "",
+    email: "",
     phone: "",
-    cityName: "Ordu",
+    cityName: "",
     contactDate: "",
     subject: "",
     contactType: "",
