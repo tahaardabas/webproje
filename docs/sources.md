@@ -6,8 +6,10 @@ Bu projedeki Ordu icerikleri ve API secimi icin kullanilan temel kaynaklar:
 
 - Ordu Valiligi Kultur ve Turizm:
   https://www.ordu.gov.tr/kultur-ve-turizm
-- Ordu Valiligi 2024 nufus verileri:
-  https://www.ordu.gov.tr/2024-yili-nufus-verileri-aciklandi
+- TUIK Adrese Dayali Nufus Kayit Sistemi Sonuclari, 2025:
+  https://data.tuik.gov.tr/Bulten/Index?p=2021-372101
+- Ordu Valiligi 2025 nufus verileri:
+  https://www.ordu.gov.tr/ordunun-nufusu-768-bin-87-oldu
 - Boztepe resmi tanitim sayfasi:
   https://ordu.ktb.gov.tr/TR-130410/boztepe-altinorduordu.html
 - Yason Burnu resmi tanitim sayfasi:
