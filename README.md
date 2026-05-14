@@ -67,6 +67,23 @@ Komutu proje klasorunde calistirdiktan sonra su adrese git:
 http://localhost:8000
 ```
 
+## Canli yayin hazirligi
+
+Bu proje `PHP` kullandigi icin statik HTML hostlarina degil, `PHP` destekleyen bir hostinge yuklenmelidir.
+
+- `InfinityFree` ve `ProFreeHost` tarafinda dosyalar genelde `htdocs` altina yuklenir.
+- `000webhost` tarafinda dosyalar genelde `public_html` altina yuklenir.
+- Sunucuya proje klasorunun kendisini degil, klasorun icindeki dosyalari yuklemek gerekir.
+- Temel olarak su dosya ve klasorler hostinge gitmelidir:
+  - `index.html`
+  - tum diger `.html` sayfalari
+  - tum `.php` dosyalari
+  - `assets/`
+  - `css/`
+  - `js/`
+
+Detayli canli yayin adimlari icin `docs/hosting-rehberi.md` dosyasina bak.
+
 ## Teslim icin gerekli ek dosyalar
 
 - `docs/rapor-sablonu.md`
