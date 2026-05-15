@@ -72,7 +72,6 @@ $validationMode = clean_value($_POST['validationMode'] ?? 'Belirtilmedi');
                     <tr><th>Konu</th><td><?php echo $subject !== '' ? $subject : '-'; ?></td></tr>
                     <tr><th>Iletisim Tercihi</th><td><?php echo $contactType !== '' ? $contactType : '-'; ?></td></tr>
                     <tr><th>Ilgi Alanlari</th><td><?php echo !empty($topics) ? implode(', ', $topics) : '-'; ?></td></tr>
-                    <tr><th>Oncelik</th><td><?php echo $priority !== '' ? $priority . '/5' : '-'; ?></td></tr>
                     <tr><th>Bulten Izni</th><td><?php echo $newsletter; ?></td></tr>
                     <tr><th>Dogrulama Yontemi</th><td><?php echo $validationMode; ?></td></tr>
                   </tbody>

@@ -47,11 +47,9 @@ $lastEmail = isset($_GET['email']) ? htmlspecialchars($_GET['email'], ENT_QUOTES
   <main class="page-shell">
     <section class="page-hero compact-hero">
       <div class="container">
-        <p class="eyebrow">Login Sistemi</p>
-        <h1>Sunucu tarafi kontrollu giris</h1>
-        <p class="page-intro">
-          Kullanici adi ogrenci numarasi tabanli mail bicimi, sifre ise ogrenci numarasi mantigiyla dogrulanir.
-          Bos alan ve mail formati kontrolu istemci tarafinda JavaScript ile yapilir; asil karsilastirma PHP tarafinda gerceklesir.
+        <p class="eyebrow">Login</p>
+        <h1>Giriş Sistemi</h1>
+        <p class="page-intro">Ogrenci numarasi ve email tabanli basit bir giris sistemi. Giris bilgileri asagida belirtilmistir.
         </p>
       </div>
     </section>
